@@ -1,4 +1,4 @@
-package com.daniel.silva.url_shortening.domain;
+package com.daniel.silva.url_shortening.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +7,6 @@ import java.math.BigInteger;
 
 @Builder
 @Getter
-@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +18,7 @@ public class Url {
     private BigInteger id;
 
     @Column(name = "shortUrl", nullable = false)
-    private String  shortURL;
+    private String shortCode;
 
     @Column(name = "longUrl", nullable = false, columnDefinition = "TEXT")
     private String longURL;

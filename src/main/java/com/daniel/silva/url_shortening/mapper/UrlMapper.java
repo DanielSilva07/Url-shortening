@@ -1,6 +1,6 @@
 package com.daniel.silva.url_shortening.mapper;
 
-import com.daniel.silva.url_shortening.domain.Url;
+import com.daniel.silva.url_shortening.domain.entity.Url;
 import com.daniel.silva.url_shortening.dto.UrlRequest;
 import com.daniel.silva.url_shortening.dto.UrlResponse;
 import org.springframework.stereotype.Component;

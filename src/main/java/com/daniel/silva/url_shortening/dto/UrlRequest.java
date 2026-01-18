@@ -11,7 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 public class UrlRequest {
 
-
     @NotBlank
     @JsonProperty("url")
     private String url;
