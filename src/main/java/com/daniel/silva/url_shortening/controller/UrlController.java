@@ -5,7 +5,6 @@ import com.daniel.silva.url_shortening.dto.UrlRequest;
 import com.daniel.silva.url_shortening.dto.UrlResponse;
 import com.daniel.silva.url_shortening.mapper.UrlMapper;
 import com.daniel.silva.url_shortening.service.UrlService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,12 +32,11 @@ public class UrlController {
     }
 
     @GetMapping("/{shortUrl}")
-    public ResponseEntity<Void> getUrlById(
+    public ResponseEntity<Void> getUrl(
             @PathVariable String shortUrl)
     {
         UrlResponse urlResponse = urlService.getShortUrl(shortUrl);
         return ResponseEntity.status(HttpStatus.FOUND)
-                .header("Location", urlResponse.getLongUrl()).build();
-//                .location(URI.create(urlResponse.getLongUrl())).build();
+                .location(URI.create(urlResponse.getLongUrl())).build();
     }
 }
