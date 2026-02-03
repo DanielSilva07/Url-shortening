@@ -7,6 +7,7 @@ import java.math.BigInteger;
 
 @Builder
 @Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class Url {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
-    @Column(name = "shortUrl", nullable = false)
+    @Column(name = "shortCode", nullable = false, unique = true)
     private String shortCode;
 
     @Column(name = "longUrl", nullable = false, columnDefinition = "TEXT")
