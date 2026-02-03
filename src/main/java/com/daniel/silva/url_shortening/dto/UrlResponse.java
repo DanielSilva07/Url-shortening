@@ -12,6 +12,6 @@ import java.math.BigInteger;
 public class UrlResponse {
 
     private BigInteger id;
-    private String shortURL;
+    private String shortCode;
     private String longUrl;
 }

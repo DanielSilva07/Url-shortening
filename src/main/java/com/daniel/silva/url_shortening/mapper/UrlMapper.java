@@ -10,15 +10,15 @@ public class UrlMapper {
 
 
     public UrlResponse urlRequestToDomain(UrlRequest urlRequest){
-        return UrlResponse.builder().shortURL(urlRequest.getUrl())
+        return UrlResponse.builder().shortCode(urlRequest.getUrl())
                 .build();
     }
 
     public UrlResponse buildUrlResponse(Url url){
         return UrlResponse.builder()
                 .id(url.getId())
-                .longUrl(url.getLongURL())
-                .shortURL(String.valueOf(url.getId()))
+//                .longUrl(url.getLongURL())
+                .shortCode(String.valueOf(url.getId()))
                 .build();
     }
 }

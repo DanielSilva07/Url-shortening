@@ -1,12 +1,10 @@
 package com.daniel.silva.url_shortening.controller;
 
-import com.daniel.silva.url_shortening.domain.entity.Url;
 import com.daniel.silva.url_shortening.dto.UrlRequest;
 import com.daniel.silva.url_shortening.dto.UrlResponse;
 import com.daniel.silva.url_shortening.mapper.UrlMapper;
 import com.daniel.silva.url_shortening.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @Controller
-@RequestMapping("api/v1")
+@RequestMapping("api/v1/shortenings")
 public class UrlController {
 
     @Autowired
@@ -25,18 +23,18 @@ public class UrlController {
 
 
     @PostMapping
-    public ResponseEntity<Url> saveUrl(
+    public ResponseEntity<UrlResponse> saveUrl(
             @RequestBody UrlRequest urlRequest
     ){
-        return ResponseEntity.ok().body(urlService.save(urlRequest));
+        return ResponseEntity.ok().body(urlService.saveUrl(urlRequest));
     }
 
-    @GetMapping("/{shortUrl}")
+    @GetMapping("/{code}")
     public ResponseEntity<Void> getUrl(
-            @PathVariable String shortUrl)
+            @PathVariable String code)
     {
-        UrlResponse urlResponse = urlService.getShortUrl(shortUrl);
-        return ResponseEntity.status(HttpStatus.FOUND)
+        UrlResponse urlResponse = urlService.getShortUrl(code);
+        return ResponseEntity.status(302)
                 .location(URI.create(urlResponse.getLongUrl())).build();
     }
 }
