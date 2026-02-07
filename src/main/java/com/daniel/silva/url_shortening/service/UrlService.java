@@ -3,6 +3,7 @@ package com.daniel.silva.url_shortening.service;
 import com.daniel.silva.url_shortening.domain.entity.Url;
 import com.daniel.silva.url_shortening.dto.UrlRequest;
 import com.daniel.silva.url_shortening.dto.UrlResponse;
+import com.daniel.silva.url_shortening.exceptions.UrlException;
 import com.daniel.silva.url_shortening.mapper.UrlMapper;
 import com.daniel.silva.url_shortening.repository.UrlRepository;
 import jakarta.transaction.Transactional;
@@ -45,7 +46,7 @@ public class UrlService {
 
     public UrlResponse getShortUrl(String shortCode){
       Url url = urlRepository.findByShortCode(shortCode)
-              .orElseThrow(() -> new RuntimeException("URL não encontrada"));
+              .orElseThrow(() -> new UrlException("URL não encontrada"));
         return urlMapper.buildUrlResponse(url);
     }
 
