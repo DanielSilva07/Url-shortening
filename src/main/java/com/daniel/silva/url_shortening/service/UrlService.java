@@ -46,7 +46,7 @@ public class UrlService {
 
     public UrlResponse getShortUrl(String shortCode){
       Url url = urlRepository.findByShortCode(shortCode)
-              .orElseThrow(() -> new UrlException("URL não encontrada"));
+              .orElseThrow(() -> UrlException.notFound(shortCode));
         return urlMapper.buildUrlResponse(url);
     }
 
